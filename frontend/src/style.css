@@ -1,0 +1,99 @@
+/* Reset Vite defaults */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html, body, #app{
+  height:100%;
+  width:100%;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Full screen gradient background */
+.login-wrapper{
+  height:100vh;
+  width:100vw;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:linear-gradient(
+    180deg,
+    #a9cba7 0%,
+    #0d3a1f 100%
+  );
+}
+
+/* Login card */
+.login-card{
+
+  width:500px;
+  height:650px;
+
+  background:#e9e9e9;
+
+  border-radius:12px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  padding-top:70px;
+
+  box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+
+/* Login title */
+.login-card h1{
+  font-size:52px;
+  font-weight:700;
+  color:black;
+
+  margin-bottom:100px;
+}
+
+/* Input fields */
+.input{
+
+  width:65%;
+  padding:14px;
+
+  margin-bottom:25px;
+
+  border:none;
+  border-radius:8px;
+
+  background:#a3acb8;
+
+  font-size:16px;
+}
+
+/* Login button */
+.login-btn{
+
+  margin-top:40px;
+
+  padding:12px 45px;
+
+  border:none;
+  border-radius:8px;
+
+  font-size:18px;
+
+  color:white;
+
+  background:linear-gradient(
+    90deg,
+    #7fe38d,
+    #0c3d1c
+  );
+
+  cursor:pointer;
+}
+
+.login-btn:hover{
+  opacity:0.9;
+}
