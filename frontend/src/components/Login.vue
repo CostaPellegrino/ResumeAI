@@ -9,7 +9,7 @@ const error = ref('')
 
 function login() {
 
-  if (username.value === 'admin' && password.value === 'admin') {
+  if (username.value === 'a' && password.value === 'a') {
     emit('loginSuccess', true)
   } else {
     error.value = 'Invalid username or password'
