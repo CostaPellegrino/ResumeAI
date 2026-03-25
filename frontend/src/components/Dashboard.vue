@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import JobForm from './JobForm.vue'
-import ResumeForm from './ResumeForm.Vue'
+import ResumeForm from './ResumeForm.vue'
 
 
 // JOB VALUES
