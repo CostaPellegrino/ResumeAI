@@ -32,6 +32,7 @@ const candidates = ref([
 const selectedJob = ref(null)
 const selectedCandidate = ref(null)
 const screenedResult = ref(null)
+const skillFilter = ref('')
 
 function parseSkills(skills) {
   return skills
@@ -69,12 +70,26 @@ function matchScore(candidate) {
 }
 
 // Sort candidates
-const rankedCandidates = computed(() => {
-  if (!selectedJob.value) return candidates.value
+const filteredCandidates = computed(() => {
+  let list = candidates.value
 
-  return [...candidates.value].sort(
-    (a, b) => matchScore(b) - matchScore(a)
-  )
+  // Apply skill filter
+  if (skillFilter.value.trim()) {
+    const search = skillFilter.value.toLowerCase()
+
+    list = list.filter(c =>
+      c.skills.toLowerCase().includes(search)
+    )
+  }
+
+  // Apply ranking if job selected
+  if (selectedJob.value) {
+    return [...list].sort(
+      (a, b) => matchScore(b) - matchScore(a)
+    )
+  }
+
+  return list
 })
 
 // Select candidate
@@ -108,13 +123,20 @@ function screenCandidate() {
     </select>
   </div>
 
+    <div class="filter-box">
+      <input 
+        v-model="skillFilter" 
+        placeholder="Filter by skill (e.g. React, Python)" 
+      />
+    </div>
+
   <div class="screen-container">
 
     <div class="candidates">
-      <h3>Candidates ({{ rankedCandidates.length }})</h3>
+      <h3>Candidates ({{ filteredCandidates.length }})</h3>
 
       <div
-        v-for="c in rankedCandidates"
+        v-for="c in filteredCandidates"
         :key="c.email"
         class="candidate-card"
         @click="selectCandidate(c)"
@@ -252,5 +274,16 @@ select {
 
 .screen-btn:hover {
   background: #45a049;
+}
+
+.filter-box {
+  margin-bottom: 15px;
+}
+
+.filter-box input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 </style>
