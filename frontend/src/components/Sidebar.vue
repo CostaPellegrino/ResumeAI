@@ -12,9 +12,9 @@ const emit = defineEmits(['navigate'])
 
   <nav>
     <a @click="emit('navigate','dashboard')">Overview</a>
-    <a>Candidates</a>
+    <a @click="emit('navigate','candidate')">Candidates</a>
     <a @click="emit('navigate','resume')">Upload Resume</a>
-    <a>Upload Job Posting</a>
+    <a @click="emit('navigate','job')">Upload Jobs</a>
     <a @click="emit('navigate','screen')">Screen Resume</a>
   </nav>
 
