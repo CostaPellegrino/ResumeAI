@@ -1,33 +1,17 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 // Props
 const props = defineProps(['jobs'])
 
-// Sample candidates for now
-const candidates = ref([
-  {
-    name: "Sarah Johnson",
-    email: "sarah.johnson@email.com",
-    skills: "React, TypeScript, Node.js",
-    experience: "5 years",
-    education: "BS Computer Science"
-  },
-  {
-    name: "Michael Chen",
-    email: "michael.chen@email.com",
-    skills: "Python, Machine Learning, React",
-    experience: "3 years",
-    education: "MS Data Science"
-  },
-  {
-    name: "Emily Rodriguez",
-    email: "emily.r@email.com",
-    skills: "JavaScript, Vue, CSS",
-    experience: "4 years",
-    education: "BS Software Engineering"
+const candidates = ref([])
+
+onMounted(() => {
+  const saved = localStorage.getItem('candidates')
+  if (saved) {
+    candidates.value = JSON.parse(saved)
   }
-])
+})
 
 const selectedJob = ref(null)
 const selectedCandidate = ref(null)
